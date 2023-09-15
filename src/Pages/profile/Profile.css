@@ -1,0 +1,10 @@
+.profilebk{
+    width: auto;
+    height: 100px;
+    background-image: url('../../Assets/img/bk.jpg');
+    border-radius: 1%;
+    margin-bottom: 30px;
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
