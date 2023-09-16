@@ -2,7 +2,7 @@ import axios from "axios"
 import { message } from "antd"
 import { Config } from "./config"
 
-const baseUrl = "http://localhost:8083/api/v1/";
+// const baseUrl = "http://localhost:8083/api/v1/";
 export const request = (method="",url="",data={}) => {
 
     var access_token = localStorage.getItem("access_token");
@@ -20,7 +20,7 @@ export const request = (method="",url="",data={}) => {
       
     }
     return axios({
-        url : baseUrl + url,
+        url : Config.baseUrl + url,
         method : method,
         data : data,
         headers : header

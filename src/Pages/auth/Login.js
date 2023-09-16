@@ -35,7 +35,7 @@ export default function LoginPage() {
           message.warning(res.data.message);
         }
       }else{
-        // message.warning("Can not connect to server!.");
+         message.warning("Can not connect to server!.");
       }
       
     });

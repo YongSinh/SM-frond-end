@@ -27,7 +27,7 @@ function App() {
 
   const isLogin = localStorage.getItem("is_login") == "1"; // true
   let role = localStorage.getItem("role")
-  console.log(role)
+  console.log( role.includes("ADMIN"))
   return (
     <>
       <BrowserRouter path="/">
@@ -41,67 +41,66 @@ function App() {
           : 
           (
 
-            role == 'TEACHER' ? (
+            role.includes("ADMIN") ? (
               <Dashboard>
-                <Routes>
-                  <Route path="/inbox" element={<HomePage />} />
-                  <Route path="/teacher/student" element={<PageStudent />} />
-                  <Route path="/teacher/attendance" element={<AttemdancePage />} />
-                  <Route path="/teacher/exam" element={<PageExam />} />
-                  <Route path="/teacher/examType" element={<PageExamType />} />
-                  <Route path="/teacher/examResult" element={<PageExamResult />} />
-                  <Route path='/profile' element={<PageProfile />}></Route>
-                  <Route path='/ViewExamResults/:id' element={<ViewExamResults />}></Route>
-                  <Route path='/attendances/:id' element={<Viewattendances />}></Route>
-                  <Route path='/ViewClassroom/:id' element={<ViewClassroom />}></Route>
-                  <Route path='/Student/attendances' element={<Studattendances />}></Route>
-                  <Route path='/Student/ExamResults' element={<StudExamResults />}></Route>
-                  <Route path='/teacher/classroom' element={<TeacherClassroomPage />}></Route>
-                  <Route path='/studentInClass/:id' element={<PageStudentInClass />}></Route>
-                </Routes>
+              <Routes>
+                <Route path="/inbox" element={<HomePage />} />
+                <Route path="/teacher" element={<TeacherPage />} />
+                <Route path="/user" element={<UserPage />} />
+                <Route path="/student" element={<PageStudent />} />
+                <Route path="/classroom" element={<ClassroomPage />} />
+                <Route path="/grade" element={<GradePage />} />
+                <Route path="/course" element={<PageCourse />} />
+                <Route path="/attendance" element={<AttemdancePage />} />
+                <Route path="/exam" element={<PageExam />} />
+                <Route path="/examType" element={<PageExamType />} />
+                <Route path="/examResult" element={<PageExamResult />} />
+                <Route path='/profile' element={<PageProfile />}></Route>
+                <Route path='/ViewExamResults/:id' element={<ViewExamResults />}></Route>
+                <Route path='/attendances/:id' element={<Viewattendances />}></Route>
+                <Route path='/ViewClassroom/:id' element={<ViewClassroom />}></Route>
+                <Route path='/Student/attendances' element={<Studattendances />}></Route>
+                <Route path='/Student/ExamResults' element={<StudExamResults />}></Route>
+                <Route path='/teacherclassroom' element={<TeacherClassroomPage />}></Route>
+                <Route path='/studentInClass/:id' element={<PageStudentInClass />}></Route>
+              </Routes>
+            </Dashboard>
 
-              </Dashboard>
             )
               :
-              role == 'STUDENT' ?
+            role.includes("TEACHER")  ?
                 (
-                  <ResponsiveAppBar>
-                    <Routes>
-                      <Route path="/inbox" element={<HomePage />} />
-                      <Route path='/profile' element={<PageProfile />}></Route>
-                      <Route path='/Student/attendances' element={<Studattendances />}></Route>
-                      <Route path='/Student/ExamResults' element={<StudExamResults />}></Route>
-                    </Routes>
-
-                  </ResponsiveAppBar>
+                  <Dashboard>
+                  <Routes>
+                    <Route path="/teacher/student" element={<PageStudent />} />
+                    <Route path="/teacher/attendance" element={<AttemdancePage />} />
+                    <Route path="/teacher/exam" element={<PageExam />} />
+                    <Route path="/teacher/examType" element={<PageExamType />} />
+                    <Route path="/teacher/examResult" element={<PageExamResult />} />
+                    <Route path='/profile' element={<PageProfile />}></Route>
+                    <Route path='/ViewExamResults/:id' element={<ViewExamResults />}></Route>
+                    <Route path='/attendances/:id' element={<Viewattendances />}></Route>
+                    <Route path='/ViewClassroom/:id' element={<ViewClassroom />}></Route>
+                    <Route path='/Student/attendances' element={<Studattendances />}></Route>
+                    <Route path='/Student/ExamResults' element={<StudExamResults />}></Route>
+                    <Route path='/teacher/classroom' element={<TeacherClassroomPage />}></Route>
+                    <Route path='/studentInClass/:id' element={<PageStudentInClass />}></Route>
+                  </Routes>
+                </Dashboard>
 
                 )
                 :
                 (
-                  <Dashboard>
-                    <Routes>
-                      <Route path="/inbox" element={<HomePage />} />
-                      <Route path="/teacher" element={<TeacherPage />} />
-                      <Route path="/user" element={<UserPage />} />
-                      <Route path="/student" element={<PageStudent />} />
-                      <Route path="/classroom" element={<ClassroomPage />} />
-                      <Route path="/grade" element={<GradePage />} />
-                      <Route path="/course" element={<PageCourse />} />
-                      <Route path="/attendance" element={<AttemdancePage />} />
-                      <Route path="/exam" element={<PageExam />} />
-                      <Route path="/examType" element={<PageExamType />} />
-                      <Route path="/examResult" element={<PageExamResult />} />
-                      <Route path='/profile' element={<PageProfile />}></Route>
-                      <Route path='/ViewExamResults/:id' element={<ViewExamResults />}></Route>
-                      <Route path='/attendances/:id' element={<Viewattendances />}></Route>
-                      <Route path='/ViewClassroom/:id' element={<ViewClassroom />}></Route>
-                      <Route path='/Student/attendances' element={<Studattendances />}></Route>
-                      <Route path='/Student/ExamResults' element={<StudExamResults />}></Route>
-                      <Route path='/teacherclassroom' element={<TeacherClassroomPage />}></Route>
-                      <Route path='/studentInClass/:id' element={<PageStudentInClass />}></Route>
-                    </Routes>
+                  <ResponsiveAppBar>
+                  <Routes>
+                    <Route path="/inbox" element={<HomePage />} />
+                    <Route path='/profile' element={<PageProfile />}></Route>
+                    <Route path='/Student/attendances' element={<Studattendances />}></Route>
+                    <Route path='/Student/ExamResults' element={<StudExamResults />}></Route>
+                  </Routes>
 
-                  </Dashboard>
+                </ResponsiveAppBar>
+                  
                 )
 
 

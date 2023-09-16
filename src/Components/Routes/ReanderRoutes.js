@@ -74,8 +74,7 @@ function ListItemLink(props) {
     </li>
   );
 }
-let role = localStorage.getItem("role")
-console.log(role)
+let role = localStorage.getItem("role") || ""
 ListItemLink.propTypes = {
   icon: PropTypes.element,
   primary: PropTypes.string.isRequired,
@@ -97,8 +96,25 @@ export default function ListRouter() {
     <Box sx={{ width: 360 }}>
       <Paper elevation={0}>
         <List aria-label="main mailbox folders">
-          {role == 'TEACHER' ? (
-            <>
+          {role.includes("ADMIN") ? (
+             <>
+             <ListItemLink to="/inbox" primary="Inbox" element={<HomePage />} icon={<InboxIcon />} />
+             <ListItemLink to="/user" primary="Users" element={<UserPage />} icon={<PeopleIcon />} />
+             <ListItemLink to="/teacher" primary="Teacher" element={<TeacherPage />} icon={<GroupAddIcon />} />
+             <ListItemLink to="/student" primary="Student" element={<PageStudent />} icon={<SchoolIcon />} />
+             <ListItemLink to="/classroom" primary="Classroom" element={<ClassroomPage />} icon={<ClassIcon />} />
+             <ListItemLink to="/grade" primary="Grade" element={<GradePage />} icon={<GradeIcon />} />
+             <ListItemLink to="/course" primary="Course" element={<PageCourse />} icon={<AddToPhotosIcon />} />
+             <ListItemLink to="/attendance" primary="Attendance" element={<AttemdancePage />} icon={<AccessAlarmsIcon />} />
+             <ListItemLink to="/exam" primary="Exam" element={<PageExam />} icon={<AddToPhotosIcon />} />
+             <ListItemLink to="/examType" primary="Exam Type" element={<PageExamType />} icon={<AddToPhotosIcon />} />
+             <ListItemLink to="/examResult" primary="Exam Result" element={<PageExamResult />} icon={< FactCheckIcon/>} />
+             
+             </>
+          ) 
+            :
+            (
+              <>
               <ListItemLink to="/teacher/student" primary="Student" element={<PageStudent />} icon={<SchoolIcon />} />
               <ListItemLink to="/teacher/attendance" primary="Attendance" element={<AttemdancePage />} icon={<AccessAlarmsIcon />} />
               <ListItemLink to="/teacher/exam" primary="Exam" element={<PageExam />} icon={<AddToPhotosIcon />} />
@@ -106,23 +122,7 @@ export default function ListRouter() {
               <ListItemLink to="/teacher/examResult" primary="Exam Result" element={<PageExamResult />} icon={< FactCheckIcon/>} />
               <ListItemLink to="/teacher/classroom" primary="Classroom" element={<TeacherClassroomPage />} icon={<ClassIcon />} />
             </>
-          ) 
-            :
-            (
-              <>
-              <ListItemLink to="/inbox" primary="Inbox" element={<HomePage />} icon={<InboxIcon />} />
-              <ListItemLink to="/user" primary="Users" element={<UserPage />} icon={<PeopleIcon />} />
-              <ListItemLink to="/teacher" primary="Teacher" element={<TeacherPage />} icon={<GroupAddIcon />} />
-              <ListItemLink to="/student" primary="Student" element={<PageStudent />} icon={<SchoolIcon />} />
-              <ListItemLink to="/classroom" primary="Classroom" element={<ClassroomPage />} icon={<ClassIcon />} />
-              <ListItemLink to="/grade" primary="Grade" element={<GradePage />} icon={<GradeIcon />} />
-              <ListItemLink to="/course" primary="Course" element={<PageCourse />} icon={<AddToPhotosIcon />} />
-              <ListItemLink to="/attendance" primary="Attendance" element={<AttemdancePage />} icon={<AccessAlarmsIcon />} />
-              <ListItemLink to="/exam" primary="Exam" element={<PageExam />} icon={<AddToPhotosIcon />} />
-              <ListItemLink to="/examType" primary="Exam Type" element={<PageExamType />} icon={<AddToPhotosIcon />} />
-              <ListItemLink to="/examResult" primary="Exam Result" element={<PageExamResult />} icon={< FactCheckIcon/>} />
-              
-              </>
+             
             )
           }
         </List>
