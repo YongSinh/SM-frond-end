@@ -15,7 +15,6 @@ export default function LoginPage() {
     password: fields.password,
     };
 
-    console.log(params)
     setLoading(true)
     request("post", "auth/login", params).then((res) => {
       setTimeout(() => {
@@ -35,7 +34,7 @@ export default function LoginPage() {
           message.warning(res.data.message);
         }
       }else{
-         message.warning("Can not connect to server!.");
+       message.warning("Can not connect to server!.");
       }
       
     });
@@ -44,7 +43,7 @@ export default function LoginPage() {
 
   return (
     <div className="loging-form">
-      <h1 style={{marginBottom:30}}>ECM-Backend</h1>
+      <h1 style={{marginBottom:30}}>SMS-LOGIN</h1>
       <Form
         name="normal_login"
         size="large"
